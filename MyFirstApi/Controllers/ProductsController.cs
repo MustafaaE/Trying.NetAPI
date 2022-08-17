@@ -43,6 +43,11 @@ namespace MyFirstApi.Controllers
         [HttpPost]
         public async Task<ActionResult<Product>> PostProduct(Product product)
         {
+            // If error occurs when creating a new product, send a badrequest
+            //if (!ModelState.IsValid)
+            //{
+            //    return BadRequest();
+            //}
             _context.Products.Add(product);
             await _context.SaveChangesAsync();
 

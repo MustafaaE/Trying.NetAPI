@@ -25,3 +25,7 @@ C:\Users\musta\source\repos\MyFirstApi\MyFirstApi\obj\Debug\net6.0\refint\MyFirs
 C:\Users\musta\source\repos\MyFirstApi\MyFirstApi\obj\Debug\net6.0\MyFirstApi.pdb
 C:\Users\musta\source\repos\MyFirstApi\MyFirstApi\obj\Debug\net6.0\MyFirstApi.genruntimeconfig.cache
 C:\Users\musta\source\repos\MyFirstApi\MyFirstApi\obj\Debug\net6.0\ref\MyFirstApi.dll
+C:\Users\musta\source\repos\MyFirstApi\MyFirstApi\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.dll
+C:\Users\musta\source\repos\MyFirstApi\MyFirstApi\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Abstractions.dll
+C:\Users\musta\source\repos\MyFirstApi\MyFirstApi\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.InMemory.dll
+C:\Users\musta\source\repos\MyFirstApi\MyFirstApi\bin\Debug\net6.0\Microsoft.Extensions.Caching.Memory.dll

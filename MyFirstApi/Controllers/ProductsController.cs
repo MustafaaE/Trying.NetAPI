@@ -1,5 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
+using MyFirstApi.Models;
 
 namespace MyFirstApi.Controllers
 {
@@ -7,10 +7,24 @@ namespace MyFirstApi.Controllers
     [ApiController]
     public class ProductsController : ControllerBase
     {
-        [HttpGet]
-        public string GetProducts()
+        private readonly ShopContext _context;
+
+        public ProductsController(ShopContext context)
         {
-            return "OK";
+            _context = context;
+            //to ensure that the seedign of the database is occuring 
+            _context.Database.EnsureCreated();
         }
+
+        [HttpGet]
+        public IEnumerable<Product> GetAllProducts()
+        {
+            return _context.Products.ToArray();
+        }
+        // Can also write it with actionresult instead of iEnumerable
+        //public actionresult getallproducts()
+        //{
+        //    return ok(_context.products.toarray());
+        //}
     }
 }

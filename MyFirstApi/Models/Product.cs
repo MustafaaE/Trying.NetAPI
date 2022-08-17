@@ -1,4 +1,5 @@
-﻿using System.Text.Json.Serialization;
+﻿using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 
 namespace MyFirstApi.Models
 {
@@ -15,9 +16,13 @@ namespace MyFirstApi.Models
 
         public bool IsAvailable { get; set; }
 
+
+        [Required]
         public int CategoryId { get; set; }
+
+        // declared as nullable, when new product is created it's only retrieved but not set. 
         [JsonIgnore]
-        public virtual Category Category { get; set; }
+        public virtual Category? Category { get; set; }
 
 
     }

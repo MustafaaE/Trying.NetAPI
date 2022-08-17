@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using MyFirstApi.Models;
 
 namespace MyFirstApi.Controllers
@@ -17,14 +18,26 @@ namespace MyFirstApi.Controllers
         }
 
         [HttpGet]
-        public IEnumerable<Product> GetAllProducts()
-        {
-            return _context.Products.ToArray();
-        }
-        // Can also write it with actionresult instead of iEnumerable
-        //public actionresult getallproducts()
+        //public IEnumerable<Product> GetAllProducts()
         //{
-        //    return ok(_context.products.toarray());
+        //    return _context.Products.ToArray();
         //}
+
+        // Can also write it with actionresult instead of iEnumerable
+        [HttpGet]
+        public async Task<ActionResult> GetAllProducts()
+        {
+            return Ok(await _context.Products.ToArrayAsync());
+        }
+        [HttpGet("{id}")]
+        public async Task<ActionResult> GetProduct(int id)
+        {
+            var product = await _context.Products.FindAsync(id);
+            if (product == null)
+            {
+                return NotFound();
+            }
+            return Ok(product);
+        }
     }
 }

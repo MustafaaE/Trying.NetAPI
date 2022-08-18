@@ -25,9 +25,15 @@ namespace MyFirstApi.Controllers
 
         // Can also write it with actionresult instead of iEnumerable
         [HttpGet]
-        public async Task<ActionResult> GetAllProducts()
+        public async Task<ActionResult> GetAllProducts([FromQuery] QueryParameters queryParameters)
         {
-            return Ok(await _context.Products.ToArrayAsync());
+            IQueryable<Product> products = _context.Products;
+
+            products = products
+                .Skip(queryParameters.Size * (queryParameters.Page - 1))
+                .take(queryParameters.Size);
+
+            return Ok(await products.ToArrayAsync());
         }
         [HttpGet("{id}")]
         public async Task<ActionResult> GetProduct(int id)

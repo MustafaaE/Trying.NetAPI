@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using MyFirstApi.Controllers;
 using MyFirstApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -20,6 +21,13 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+//builder.Services.AddDbContext<ShopContext>(options =>
+//    options.UseSqlServer(
+//        builder.Configuration.GetConnectionString("DefaultConnection")));
+
+builder.Services.AddHealthChecks()
+    .AddCheck<HealthCheckController>("Sample");
+
 builder.Services.AddDbContext<ShopContext>(options =>
 {
     options.UseInMemoryDatabase("Shop");
@@ -39,5 +47,7 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
+
+app.MapHealthChecks("/healthcheck");
 
 app.Run();
